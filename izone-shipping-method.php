@@ -84,7 +84,7 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', g
 		// echo '<br>';
 		// echo $billing_city;
 
-	    // If the chosen shipping method is 'turntabl_shipping_method' we display
+	    // If the chosen shipping method is 'izone_shipping_method' we display
 	    if($chosen_method_id == $customer_shipping_method ){
 			if(!class_exists("WC_IzoneUtility"))
 						require plugin_dir_path(__FILE__) . "/utility.php";
