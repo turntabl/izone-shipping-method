@@ -76,7 +76,7 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', g
 
 	    $customer_shipping_method = 'izone_shipping_method_id';
 
-	    if( $method->id != $customer_shipping_method ) return; // Only display for "turntabl shipping method"
+	    if( $method->id != $customer_shipping_method ) return; // Only display for "izone shipping method"
 	   
 		$chosen_method_id = WC()->session->chosen_shipping_methods[ $index ];
 		$customer_data = WC()->session->get('customer');
@@ -104,7 +104,6 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', g
 			$msg = $response_decoded->msg;
 			$stores = $response_decoded->data;
 			if ($code == "00") {
-
 				if(empty($stores)){
 					echo '<br>';
 					woocommerce_form_field( 'selected_store' , array(
@@ -116,9 +115,7 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', g
 							"" => ("No Store Available"),
 					)), WC()->checkout->get_value( 'selected_store' ));
 					wc_add_notice( ( "Could not find nearest store(s) for ".$billing_city ), "error" );
-
 				}else{
-
 					echo '<br>';
 					woocommerce_form_field( 'selected_store' , array(
 						'type'          => 'select',
@@ -149,7 +146,6 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', g
 							});
 						</script>
 					<?php
-
 				}
 			}else{
 				echo '<br>';
