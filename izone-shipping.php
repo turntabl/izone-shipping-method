@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name: Izone Shipping method plugin
+Plugin Name: Izone 
 Description: Izone shipping plugin allows you to get the nearest stores based on your address or location
 Version: 1.0.0
 Author: Samuel Osei Kwakye
@@ -174,6 +174,7 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', g
 	function get_order_details( $order_id ){
 
 		$order = new WC_Order( $order_id );
+		// $order_id = trim(str_replace('#', '', $order->get_order_number()));
 
 		$carts = [];
 		foreach( $order->get_items() as $item_id => $item ){
@@ -189,11 +190,13 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', g
 		}
 
 		$shipping_add = [
+			"order_id" => $order_id,
 			"firstname" => $order->billing_first_name,
 			"lastname" => $order->billing_last_name,
 			"address1" => $order->billing_address_1,
 			"address2" => $order->billing_address_2,
 			"city" => $order->billing_city,
+			"email" => $order->billing_email,
 			"zipcode" => $order->billing_postcode,
 			"phone" => $order->billing_phone,
 			"state_name" => $order->billing_state,
@@ -204,7 +207,7 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', g
 		if(!class_exists("WC_IzoneUtility"))
 				require plugin_dir_path(__FILE__) . "/utility.php";
 
-				$url = "https://hook.integromat.com/mmwgf5v5bmk3cuk3r9g4wxabcnr14frq";
+				$url = "https://hook.integromat.com/jjat9jry4atuu9y8xswevgilkvtk4pen";
 				$response = WC_IzoneUtility::post_to_url($url, $shipping_add);
 				// var_dump("Response from integromat");
 				// var_dump($response);
